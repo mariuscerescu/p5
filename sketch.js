@@ -1,16 +1,26 @@
 function setup() {
-  createCanvas(700, 700);
+  createCanvas(710, 400, WEBGL);
 }
 
 function draw() {
-  background(255);
-  fill(200, 200, 200);
-  rect(250, 180, 75, 300);
+  background(250);
+  rotateY(frameCount * 0.01);
 
-
-  fill(255, 100, 150);
-  circle(285, 180, 200);
+  for (let j = 0; j < 5; j++) {
+    push();
+    for (let i = 0; i < 80; i++) {
+      translate(
+        sin(frameCount * 0.001 + j) * 100,
+        sin(frameCount * 0.001 + j) * 100,
+        i * 0.1
+      );
+      rotateZ(frameCount * 0.002);
+      push();
+      sphere(8, 6, 4);
+      pop();
+    }
+    pop();
+  }
 }
-
 
 
